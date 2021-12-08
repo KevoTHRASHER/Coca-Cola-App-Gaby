@@ -88,11 +88,12 @@ public class Login extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null,"INTRODUCE tu CONTRASEÑA","CONTRASEÑA VACÍA",JOptionPane.WARNING_MESSAGE);
 			}
 			else if(campoTextoCapturaNombre.getText().equals(campoContraseña.getText())) {
-				this.setVisible(false);
+				this.dispose();
 				JOptionPane.showMessageDialog(null,"ACCESO OTORGADO");
 				Licencia licencia = new Licencia();
 				licencia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				licencia.setBounds(0,0,500,470);
+				licencia.setBounds(0,0,480,510);
+				licencia.setResizable(true);
 				licencia.setLocationRelativeTo(null);
 				licencia.setVisible(true);
 			} else {

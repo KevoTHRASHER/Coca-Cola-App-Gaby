@@ -23,7 +23,7 @@ public class Licencia extends JFrame implements ActionListener, ChangeListener {
 		nombreCapturadoJFrameBienvenido = bienvenidoJFrame.nombreCapturado;
 
 		etiquetaTerminosCondiciones = new JLabel("TÉRMINOS Y CONDICIONES");
-		etiquetaTerminosCondiciones.setBounds(150,10,250,25);
+		etiquetaTerminosCondiciones.setBounds(140,10,250,25);
 		etiquetaTerminosCondiciones.setFont(new Font("FreeSans",1,16));
 		add(etiquetaTerminosCondiciones);
 
@@ -47,20 +47,20 @@ public class Licencia extends JFrame implements ActionListener, ChangeListener {
 		add(scrollPaneAreaTerminosCondiciones);
 
 		cajaBoxAcepto = new JCheckBox("Yo " + nombreCapturadoJFrameBienvenido + " Acepto");
-		cajaBoxAcepto.setBounds(15,300,100,20);
+		cajaBoxAcepto.setBounds(15,340,200,20);
 		cajaBoxAcepto.setFont(new Font("FreeSans",1,13));
 		cajaBoxAcepto.addChangeListener(this);
 		add(cajaBoxAcepto);
 
 		botonContinuar = new JButton("Continuar");
-		botonContinuar.setBounds(15,350,100,25);
+		botonContinuar.setBounds(100,410,125,25);
 		botonContinuar.setFont(new Font("FreeSans",1,13));
 		botonContinuar.setEnabled(false);
 		botonContinuar.addActionListener(this);
 		add(botonContinuar);
 
 		botonNoAcepto = new JButton("No Acepto");
-		botonNoAcepto.setBounds(125,350,100,25);
+		botonNoAcepto.setBounds(240,410,125,25);
 		botonNoAcepto.setFont(new Font("FreeSans",1,13));
 		botonNoAcepto.setEnabled(true);
 		botonNoAcepto.addActionListener(this);
@@ -68,21 +68,27 @@ public class Licencia extends JFrame implements ActionListener, ChangeListener {
 
 		imagenCocaColaRojo = new ImageIcon("images/coca-cola-rojo.png");
 		etiquetaImagenCocaColaRojo = new JLabel();
-		etiquetaImagenCocaColaRojo.setBounds(210,290,300,100);
+		etiquetaImagenCocaColaRojo.setBounds(190,290,300,100);
 		etiquetaImagenCocaColaRojo.setIcon(imagenCocaColaRojo);
 		etiquetaImagenCocaColaRojo.setOpaque(true);
 		add(etiquetaImagenCocaColaRojo);
 
 		etiquetaMarcaAutor = new JLabel("©2021 The Coca-Cola Company by Gaby");
-		etiquetaMarcaAutor.setBounds(170,410,450,20);
+		etiquetaMarcaAutor.setBounds(180,480,450,20);
 		etiquetaMarcaAutor.setFont(new Font("Hack",1,12));
 		add(etiquetaMarcaAutor);
+
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(0,0,480,510);
+		this.setResizable(true);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 
 	}
 
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == botonNoAcepto) {
-			if(JOptionPane.showConfirmDialog(null,"NO ACEPTA LOS TERMINOS Y CONDICIONES el Programa se CERRARA","CERRAR PROGRAMA",JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
+			if(JOptionPane.showConfirmDialog(this,"NO ACEPTA LOS TERMINOS Y CONDICIONES el Programa se CERRARA","CERRAR PROGRAMA",JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
 				System.exit(0);
 			}
 		}
@@ -107,14 +113,14 @@ public class Licencia extends JFrame implements ActionListener, ChangeListener {
 		}
 	}
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//
+//		Licencia licencia = new Licencia();
+//		licencia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		licencia.setBounds(0,0,480,510);
+//		licencia.setResizable(true);
+//		licencia.setLocationRelativeTo(null);
+//		licencia.setVisible(true);
 
-		Licencia licencia = new Licencia();
-		licencia.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		licencia.setBounds(0,0,500,470);
-		licencia.setResizable(true);
-		licencia.setLocationRelativeTo(null);
-		licencia.setVisible(true);
-
-	}
+//	}
 }

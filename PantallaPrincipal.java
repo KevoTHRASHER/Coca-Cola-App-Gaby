@@ -7,8 +7,8 @@ import java.awt.Font;
 public class PantallaPrincipal extends JFrame implements ActionListener {
 
 	private JMenuBar barraMenu;
-	private JMenu menuOpciones, menuColorFondo, menuCalcular, menuAcerca;
-	private JMenuItem menuItemRojo, menuItemMorado, menuItemNegro, menuItemNuevo, menuItemSalir, menuItemVacaciones, menuItemAutor;
+	private JMenu menuOpciones, menuColorFondo, menuCRUD, menuAcerca;
+	private JMenuItem menuItemRojo, menuItemMorado, menuItemNegro, menuItemSalir, menuItemCrear, menuItemLeer, menuItemActualizar, menuItemBorrar, menuItemAutor;
 	private ImageIcon imagenCocaColaBlanco,imagenAutor;
 	private JLabel etiquetaImagenCocaColaBlanco, etiquetaBienvenido, etiquetaDatosTrabajador, etiquetaNombres, etiquetaApellidoPaterno, etiquetaApellidoMaterno, etiquetaDepartamento, etiquetaAntiguedad, etiquetaCalculo, etiquetaMarcaAutor;
 	private JTextField campoTextoNombres, campoTextoApellidoPaterno, campoTextoApellidoMaterno;
@@ -53,25 +53,36 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		menuItemNegro.addActionListener(this);
 		menuColorFondo.add(menuItemNegro);
 
-		menuItemNuevo = new JMenuItem("Nuevo");
-		menuItemNuevo.setForeground(Color.RED);
-		menuItemNuevo.addActionListener(this);
-		menuOpciones.add(menuItemNuevo);
-
 		menuItemSalir = new JMenuItem("Salir");
 		menuItemSalir.setForeground(Color.RED);
 		menuItemSalir.addActionListener(this);
 		menuOpciones.add(menuItemSalir);
 
-		menuCalcular = new JMenu("Calcular");
-		menuCalcular.setFont(new Font("Andale Mono",1,14));
-		menuCalcular.setForeground(Color.WHITE);
-		barraMenu.add(menuCalcular);
+		menuCRUD = new JMenu("CRUD");
+		menuCRUD.setFont(new Font("Andale Mono",1,14));
+		menuCRUD.setForeground(Color.WHITE);
+		barraMenu.add(menuCRUD);
 
-		menuItemVacaciones = new JMenuItem("Vacaciones");
-		menuItemVacaciones.setForeground(Color.RED);
-		menuItemVacaciones.addActionListener(this);
-		menuCalcular.add(menuItemVacaciones);
+		menuItemCrear = new JMenuItem("Crear");
+		menuItemCrear.setForeground(Color.RED);
+		menuItemCrear.addActionListener(this);
+		menuCRUD.add(menuItemCrear);
+
+
+		menuItemLeer = new JMenuItem("Leer");
+		menuItemLeer.setForeground(Color.RED);
+		menuItemLeer.addActionListener(this);
+		menuCRUD.add(menuItemLeer);
+
+		menuItemActualizar = new JMenuItem("Actualizar");
+		menuItemActualizar.setForeground(Color.RED);
+		menuItemActualizar.addActionListener(this);
+		menuCRUD.add(menuItemActualizar);
+
+		menuItemBorrar = new JMenuItem("Borrar");
+		menuItemBorrar.setForeground(Color.RED);
+		menuItemBorrar.addActionListener(this);
+		menuCRUD.add(menuItemBorrar);
 
 		menuAcerca = new JMenu("Acerca de");
 		menuAcerca.setFont(new Font("Andale Mono",1,14));
@@ -208,6 +219,12 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		etiquetaMarcaAutor.setOpaque(true);
 		add(etiquetaMarcaAutor);
 
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(0,0,580,560);
+		this.setResizable(true);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+
 	}
 
 	public void actionPerformed(ActionEvent ae) {
@@ -227,6 +244,16 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		if(ae.getSource() == menuItemMorado) {
 			getContentPane().setBackground(new Color(102,0,153));
 			barraMenu.setBackground(new Color(102,0,153));
+			menuColorFondo.setForeground(new Color(102,0,153));
+			menuItemRojo.setForeground(new Color(102,0,153));
+			menuItemMorado.setForeground(new Color(102,0,153));
+			menuItemNegro.setForeground(new Color(102,0,153));
+			menuItemSalir.setForeground(new Color(102,0,153));
+			menuItemCrear.setForeground(new Color(102,0,153));
+			menuItemLeer.setForeground(new Color(102,0,153));
+			menuItemActualizar.setForeground(new Color(102,0,153));
+			menuItemBorrar.setForeground(new Color(102,0,153));
+			menuItemAutor.setForeground(new Color(102,0,153));
 			etiquetaNombres.setBackground(new Color(102,0,153));
 			etiquetaApellidoPaterno.setBackground(new Color(102,0,153));
 			etiquetaApellidoMaterno.setBackground(new Color(102,0,153));
@@ -238,6 +265,16 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		if(ae.getSource() == menuItemNegro) {
 			getContentPane().setBackground(Color.BLACK);
 			barraMenu.setBackground(Color.BLACK);
+			menuItemRojo.setForeground(Color.BLACK);
+			menuItemMorado.setForeground(Color.BLACK);
+			menuItemNegro.setForeground(Color.BLACK);
+			menuColorFondo.setForeground(Color.BLACK);
+			menuItemSalir.setForeground(Color.BLACK);
+			menuItemCrear.setForeground(Color.BLACK);
+			menuItemLeer.setForeground(Color.BLACK);
+			menuItemActualizar.setForeground(Color.BLACK);
+			menuItemBorrar.setForeground(Color.BLACK);
+			menuItemAutor.setForeground(Color.BLACK);
 			etiquetaNombres.setBackground(Color.BLACK);
 			etiquetaApellidoPaterno.setBackground(Color.BLACK);
 			etiquetaApellidoMaterno.setBackground(Color.BLACK);
@@ -245,14 +282,6 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 			etiquetaDepartamento.setBackground(Color.BLACK);
 			etiquetaAntiguedad.setBackground(Color.BLACK);
 			etiquetaCalculo.setBackground(Color.BLACK);
-		}
-		if(ae.getSource() == menuItemNuevo) {
-			campoTextoNombres.setText("");
-			campoTextoApellidoPaterno.setText("");
-			campoTextoApellidoMaterno.setText("");
-			areaTextoCalculo.setText("");
-			comboDepartamento.setSelectedIndex(0);
-			comboAntiguedad.setSelectedIndex(0);
 		}
 		if(ae.getSource() == menuItemSalir) {
 			if(JOptionPane.showConfirmDialog(null,"Desea SALIR del PROGRAMA","CERRAR PROGRAMA",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION ) {
@@ -262,7 +291,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		if(ae.getSource() == menuItemAutor) {
 		JOptionPane.showMessageDialog(null,"Desarrollado por Kevo.THRASHER\nhttps://github.com/KevoTHRASHER","Autor",JOptionPane.INFORMATION_MESSAGE,imagenAutor);
 		}
-		if(ae.getSource() == menuItemVacaciones) {
+		if(ae.getSource() == menuItemCrear) {
 			if(campoTextoNombres.getText().length() == 0) {
 				JOptionPane.showMessageDialog(null,"Favor de INGRESAR sus NOMBRES","INGRESA NOMBRE",JOptionPane.WARNING_MESSAGE);
 			}
@@ -322,14 +351,14 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		}
 	}
 
-	public static void main(String[] args) {
-
-		PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
-		pantallaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		pantallaPrincipal.setBounds(0,0,580,560);
-		pantallaPrincipal.setResizable(true);
-		pantallaPrincipal.setLocationRelativeTo(null);
-		pantallaPrincipal.setVisible(true);
-
-	}
+//	public static void main(String[] args) {
+//
+//		PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
+//		pantallaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		pantallaPrincipal.setBounds(0,0,580,560);
+//		pantallaPrincipal.setResizable(true);
+//		pantallaPrincipal.setLocationRelativeTo(null);
+//		pantallaPrincipal.setVisible(true);
+//
+//	}
 }
