@@ -10,8 +10,8 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 	private JMenu menuOpciones, menuColorFondo, menuCRUD, menuAcerca;
 	private JMenuItem menuItemRojo, menuItemMorado, menuItemNegro, menuItemSalir, menuItemCrear, menuItemLeer, menuItemActualizar, menuItemBorrar, menuItemAutor;
 	private ImageIcon imagenCocaColaBlanco,imagenAutor;
-	private JLabel etiquetaImagenCocaColaBlanco, etiquetaBienvenido, etiquetaDatosTrabajador, etiquetaNombres, etiquetaApellidoPaterno, etiquetaApellidoMaterno, etiquetaDepartamento, etiquetaAntiguedad, etiquetaCalculo, etiquetaMarcaAutor;
-	private JTextField campoTextoNombres, campoTextoApellidoPaterno, campoTextoApellidoMaterno;
+	private JLabel etiquetaImagenCocaColaBlanco, etiquetaMarcaAutor;
+	private JButton botonCrear, botonLeer, botonActualizar, botonBorrar;
 	private JComboBox comboDepartamento, comboAntiguedad;
 	private JTextArea areaTextoCalculo;
 	String nombreCapturadoJFrameBienvenido = "";
@@ -23,14 +23,13 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		getContentPane().setBackground(Color.RED);
 		setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage());
 		Login objLogin = new Login();
-		nombreCapturadoJFrameBienvenido = objLogin.nombreCapturado;
 
 		barraMenu = new JMenuBar();
 		barraMenu.setBackground(Color.RED);
 		setJMenuBar(barraMenu);
 
 		menuOpciones = new JMenu("Opciones");
-		menuOpciones.setFont(new Font("Andale Mono",1,14));
+		menuOpciones.setFont(new Font("Hack",1,14));
 		menuOpciones.setForeground(Color.WHITE);
 		barraMenu.add(menuOpciones);
 
@@ -59,7 +58,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		menuOpciones.add(menuItemSalir);
 
 		menuCRUD = new JMenu("CRUD");
-		menuCRUD.setFont(new Font("Andale Mono",1,14));
+		menuCRUD.setFont(new Font("Hack",1,14));
 		menuCRUD.setForeground(Color.WHITE);
 		barraMenu.add(menuCRUD);
 
@@ -67,7 +66,6 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		menuItemCrear.setForeground(Color.RED);
 		menuItemCrear.addActionListener(this);
 		menuCRUD.add(menuItemCrear);
-
 
 		menuItemLeer = new JMenuItem("Leer");
 		menuItemLeer.setForeground(Color.RED);
@@ -85,7 +83,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		menuCRUD.add(menuItemBorrar);
 
 		menuAcerca = new JMenu("Acerca de");
-		menuAcerca.setFont(new Font("Andale Mono",1,14));
+		menuAcerca.setFont(new Font("Hack",1,14));
 		menuAcerca.setForeground(Color.WHITE);
 		barraMenu.add(menuAcerca);
 
@@ -97,122 +95,44 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 
 		imagenCocaColaBlanco = new ImageIcon("images/logo-coca.png");
 		etiquetaImagenCocaColaBlanco = new JLabel(imagenCocaColaBlanco);
-		etiquetaImagenCocaColaBlanco.setBounds(15,10,250,125);
+		etiquetaImagenCocaColaBlanco.setBounds(70,10,250,125);
 		etiquetaImagenCocaColaBlanco.setBackground(Color.RED);
 		add(etiquetaImagenCocaColaBlanco);
 
-		etiquetaBienvenido = new JLabel("Bienvenido! " + nombreCapturadoJFrameBienvenido);
-		etiquetaBienvenido.setFont(new Font("Andale Mono",1,22));
-		etiquetaBienvenido.setForeground(Color.WHITE);
-		etiquetaBienvenido.setBounds(300,23,280,100);
-		add(etiquetaBienvenido);
+		botonCrear = new JButton("CREAR");
+		botonCrear.setBounds(30,180,150,25);
+		botonCrear.setFont(new Font("Hack",1,16));
+		botonCrear.setForeground(Color.WHITE);
+		botonCrear.setBackground(Color.RED);
+		botonCrear.setOpaque(true);
+		add(botonCrear);
 
-		etiquetaDatosTrabajador = new JLabel("Datos del Trabajador ALTA");
-		etiquetaDatosTrabajador.setFont(new Font("Andale Mono",1,17));
-		etiquetaDatosTrabajador.setForeground(Color.WHITE);
-		etiquetaDatosTrabajador.setBackground(Color.RED);
-		etiquetaDatosTrabajador.setBounds(50,130,480,50);
-		add(etiquetaDatosTrabajador);
+		botonLeer = new JButton("LEER");
+		botonLeer.setBounds(30,240,150,25);
+		botonLeer.setFont(new Font("Hack",1,16));
+		botonLeer.setForeground(Color.WHITE);
+		botonLeer.setBackground(Color.RED);
+		botonLeer.setOpaque(true);
+		add(botonLeer);
 
-		etiquetaNombres = new JLabel("Nombre :");
-		etiquetaNombres.setBounds(30,200,150,25);
-		etiquetaNombres.setFont(new Font("Andale Mono",1,13));
-		etiquetaNombres.setForeground(Color.WHITE);
-		etiquetaNombres.setBackground(Color.RED);
-		etiquetaNombres.setOpaque(true);
-		add(etiquetaNombres);
+		botonActualizar = new JButton("ACTUALIZAR");
+		botonActualizar.setBounds(220,180,150,25);
+		botonActualizar.setFont(new Font("Hack", Font.BOLD, 16));
+		botonActualizar.setForeground(Color.WHITE);
+		botonActualizar.setBackground(Color.RED);
+		botonActualizar.setOpaque(true);
+		add(botonActualizar);
 
-		campoTextoNombres = new JTextField();
-		campoTextoNombres.setBounds(30,230,150,25);
-		campoTextoNombres.setFont(new Font("Andale Mono",1,14));
-		campoTextoNombres.setForeground(Color.RED);
-		add(campoTextoNombres);
+		botonBorrar = new JButton("BORRAR");
+		botonBorrar.setBounds(220,240,150,25);
+		botonBorrar.setFont(new Font("Hack", Font.BOLD, 16));
+		botonBorrar.setForeground(Color.WHITE);
+		botonBorrar.setBackground(Color.RED);
+		botonBorrar.setOpaque(true);
+		add(botonBorrar);
 
-		etiquetaApellidoPaterno = new JLabel("Apellido Paterno :");
-		etiquetaApellidoPaterno.setBounds(30,260,150,25);
-		etiquetaApellidoPaterno.setFont(new Font("Andale Mono",1,13));
-		etiquetaApellidoPaterno.setForeground(Color.WHITE);
-		etiquetaApellidoPaterno.setBackground(Color.RED);
-		etiquetaApellidoPaterno.setOpaque(true);
-		add(etiquetaApellidoPaterno);
-
-		campoTextoApellidoPaterno = new JTextField();
-		campoTextoApellidoPaterno.setBounds(30,290,150,25);
-		campoTextoApellidoPaterno.setFont(new Font("Andale Mono",1,14));
-		campoTextoApellidoPaterno.setForeground(Color.RED);
-		add(campoTextoApellidoPaterno);
-
-		etiquetaApellidoMaterno = new JLabel("Apellido Materno :");
-		etiquetaApellidoMaterno.setBounds(30,320,150,25);
-		etiquetaApellidoMaterno.setFont(new Font("Andale Mono",1,13));
-		etiquetaApellidoMaterno.setForeground(Color.WHITE);
-		etiquetaApellidoMaterno.setBackground(Color.RED);
-		etiquetaApellidoMaterno.setOpaque(true);
-		add(etiquetaApellidoMaterno);
-
-		campoTextoApellidoMaterno = new JTextField();
-		campoTextoApellidoMaterno.setBounds(30,350,150,25);
-		campoTextoApellidoMaterno.setFont(new Font("Andale Mono",1,14));
-		campoTextoApellidoMaterno.setForeground(Color.RED);
-		add(campoTextoApellidoMaterno);
-
-		etiquetaDepartamento = new JLabel("Selecciona el Departamento");
-		etiquetaDepartamento.setBounds(220,200,225,25);
-		etiquetaDepartamento.setFont(new Font("Andale Mono",1,13));
-		etiquetaDepartamento.setForeground(Color.WHITE);
-		etiquetaDepartamento.setBackground(Color.RED);
-		etiquetaDepartamento.setOpaque(true);
-		add(etiquetaDepartamento);
-
-		comboDepartamento = new JComboBox();
-		comboDepartamento.setBounds(220,230,225,25);
-		comboDepartamento.setFont(new Font("Andale Mono",1,14));
-		comboDepartamento.setForeground(Color.RED);
-		comboDepartamento.addActionListener(this);
-		add(comboDepartamento);
-
-		comboDepartamento.addItem("");
-		comboDepartamento.addItem("Atencion a Clientes");
-		comboDepartamento.addItem("Departamento Logística");
-		comboDepartamento.addItem("Departamento Gerencia");
-
-		etiquetaAntiguedad = new JLabel("Selecciona la Antiguedad");
-		etiquetaAntiguedad.setBounds(220,260,225,25);
-		etiquetaAntiguedad.setFont(new Font("Andale Mono",1,13));
-		etiquetaAntiguedad.setForeground(Color.WHITE);
-		etiquetaAntiguedad.setBackground(Color.RED);
-		etiquetaAntiguedad.setOpaque(true);
-		add(etiquetaAntiguedad);
-
-		comboAntiguedad = new JComboBox();
-		comboAntiguedad.setBounds(220,290,225,25);
-		comboAntiguedad.setFont(new Font("Andale Mono",1,14));
-		comboAntiguedad.setForeground(Color.RED);
-		comboAntiguedad.addActionListener(this);
-		add(comboAntiguedad);
-
-		comboAntiguedad.addItem("");
-		comboAntiguedad.addItem("1 año de servicio");
-		comboAntiguedad.addItem("2 a 6 años de servicio");
-		comboAntiguedad.addItem("7 años o más de servicio");
-
-		etiquetaCalculo = new JLabel("em@il :");
-		etiquetaCalculo.setBounds(220,320,225,25);
-		etiquetaCalculo.setFont(new Font("Andale Mono",1,13));
-		etiquetaCalculo.setForeground(Color.WHITE);
-		etiquetaCalculo.setBackground(Color.RED);
-		etiquetaCalculo.setOpaque(true);
-		add(etiquetaCalculo);
-
-		areaTextoCalculo = new JTextArea();
-		areaTextoCalculo.setText("\n Aquí aparece el resultado del cálculo \n de las vacaciones.");
-		areaTextoCalculo.setBounds(220,350,290,100);
-		areaTextoCalculo.setFont(new Font("Andale Mono",1,13));
-		areaTextoCalculo.setForeground(Color.RED);
-		add(areaTextoCalculo);
-
-		etiquetaMarcaAutor = new JLabel("©2021 The COCA-COLA Company | Todos los derechos reservados by Gaby");
-		etiquetaMarcaAutor.setBounds(25,480,550,25);
+		etiquetaMarcaAutor = new JLabel("©2021 The COCA-COLA Company by Gaby");
+		etiquetaMarcaAutor.setBounds(70,350,550,20);
 		etiquetaMarcaAutor.setFont(new Font("Hack",1,11));
 		etiquetaMarcaAutor.setForeground(Color.WHITE);
 		etiquetaMarcaAutor.setBackground(Color.RED);
@@ -220,7 +140,7 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		add(etiquetaMarcaAutor);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(0,0,580,560);
+		this.setBounds(0,0,400,400);
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -232,14 +152,10 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		if(ae.getSource() == menuItemRojo) {
 			getContentPane().setBackground(Color.RED);
 			barraMenu.setBackground(Color.RED);
-			etiquetaNombres.setBackground(Color.RED);
-			etiquetaApellidoPaterno.setBackground(Color.RED);
-			etiquetaApellidoMaterno.setBackground(Color.RED);
+			botonCrear.setBackground(Color.RED);
+			botonLeer.setBackground(Color.RED);
 			etiquetaMarcaAutor.setBackground(Color.RED);
-			etiquetaDepartamento.setBackground(Color.RED);
-			etiquetaAntiguedad.setBackground(Color.RED);
-			etiquetaCalculo.setBackground(Color.RED);
-
+			botonActualizar.setBackground(Color.RED);
 		}
 		if(ae.getSource() == menuItemMorado) {
 			getContentPane().setBackground(new Color(102,0,153));
@@ -254,13 +170,10 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 			menuItemActualizar.setForeground(new Color(102,0,153));
 			menuItemBorrar.setForeground(new Color(102,0,153));
 			menuItemAutor.setForeground(new Color(102,0,153));
-			etiquetaNombres.setBackground(new Color(102,0,153));
-			etiquetaApellidoPaterno.setBackground(new Color(102,0,153));
-			etiquetaApellidoMaterno.setBackground(new Color(102,0,153));
+			botonCrear.setBackground(new Color(102,0,153));
+			botonLeer.setBackground(new Color(102,0,153));
 			etiquetaMarcaAutor.setBackground(new Color(102,0,153));
-			etiquetaDepartamento.setBackground(new Color(102,0,153));
-			etiquetaAntiguedad.setBackground(new Color(102,0,153));
-			etiquetaCalculo.setBackground(new Color(102,0,153));
+			botonActualizar.setBackground(new Color(102,0,153));
 		}
 		if(ae.getSource() == menuItemNegro) {
 			getContentPane().setBackground(Color.BLACK);
@@ -275,13 +188,10 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 			menuItemActualizar.setForeground(Color.BLACK);
 			menuItemBorrar.setForeground(Color.BLACK);
 			menuItemAutor.setForeground(Color.BLACK);
-			etiquetaNombres.setBackground(Color.BLACK);
-			etiquetaApellidoPaterno.setBackground(Color.BLACK);
-			etiquetaApellidoMaterno.setBackground(Color.BLACK);
+			botonCrear.setBackground(Color.BLACK);
+			botonLeer.setBackground(Color.BLACK);
 			etiquetaMarcaAutor.setBackground(Color.BLACK);
-			etiquetaDepartamento.setBackground(Color.BLACK);
-			etiquetaAntiguedad.setBackground(Color.BLACK);
-			etiquetaCalculo.setBackground(Color.BLACK);
+			botonActualizar.setBackground(Color.BLACK);
 		}
 		if(ae.getSource() == menuItemSalir) {
 			if(JOptionPane.showConfirmDialog(null,"Desea SALIR del PROGRAMA","CERRAR PROGRAMA",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION ) {
@@ -290,64 +200,6 @@ public class PantallaPrincipal extends JFrame implements ActionListener {
 		}
 		if(ae.getSource() == menuItemAutor) {
 		JOptionPane.showMessageDialog(null,"Desarrollado por Kevo.THRASHER\nhttps://github.com/KevoTHRASHER","Autor",JOptionPane.INFORMATION_MESSAGE,imagenAutor);
-		}
-		if(ae.getSource() == menuItemCrear) {
-			if(campoTextoNombres.getText().length() == 0) {
-				JOptionPane.showMessageDialog(null,"Favor de INGRESAR sus NOMBRES","INGRESA NOMBRE",JOptionPane.WARNING_MESSAGE);
-			}
-			else if(campoTextoApellidoPaterno.getText().length() == 0) {
-				JOptionPane.showMessageDialog(null,"Favor de INGRESAR tu APELLIDO PATERNO","INGRESA APELLIDO PATERNO",JOptionPane.WARNING_MESSAGE);
-
-			}
-			else if(campoTextoApellidoMaterno.getText().length() == 0) {
-				JOptionPane.showMessageDialog(null,"Favor de INGRESAR tu APELLIDO MATERNO","INGRESA APELLIDO MATERNO",JOptionPane.WARNING_MESSAGE);
-
-			}
-			else if(comboDepartamento.getSelectedIndex() == 1) {
-				if(comboAntiguedad.getSelectedIndex() == 1) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 6 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else if(comboAntiguedad.getSelectedIndex() == 2) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 14 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else if(comboAntiguedad.getSelectedIndex() == 3) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 20 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else {
-					JOptionPane.showMessageDialog(null,"Favor de SELECCIONAR el numero de años laborados ANTIGUEDAD","ESCOGE ANTIGUEDAD",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else if(comboDepartamento.getSelectedIndex() == 2) {
-				if(comboAntiguedad.getSelectedIndex() == 1) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 7 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else if(comboAntiguedad.getSelectedIndex() == 2) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 15 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else if(comboAntiguedad.getSelectedIndex() == 3) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 22 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else {
-					JOptionPane.showMessageDialog(null,"Favor de SELECCIONAR el numero de años laborados ANTIGUEDAD","ESCOGE ANTIGUEDAD",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else if(comboDepartamento.getSelectedIndex() == 3) {
-				if(comboAntiguedad.getSelectedIndex() == 1) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 10 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else if(comboAntiguedad.getSelectedIndex() == 2) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 20 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else if(comboAntiguedad.getSelectedIndex() == 3) {
-					areaTextoCalculo.setText("Hola " + campoTextoNombres.getText() + " " + campoTextoApellidoPaterno.getText() + " " + campoTextoApellidoPaterno.getText() + "\ndisfruta tus 30 días de vacaciones\nCOCA-COLA te agradece mucho tu trabajo");
-				}
-				else {
-					JOptionPane.showMessageDialog(null,"Favor de SELECCIONAR el numero de años laborados ANTIGUEDAD","ESCOGE ANTIGUEDAD",JOptionPane.WARNING_MESSAGE);
-				}
-			}
-			else {
-				JOptionPane.showMessageDialog(null,"Favor de SELECCIONAR el DEPARTAMENTO en el que LABORAS","ESCOGE DEPARTAMENTO",JOptionPane.WARNING_MESSAGE);
-			}
 		}
 	}
 
